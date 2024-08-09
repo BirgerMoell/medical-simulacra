@@ -1,7 +1,8 @@
 ## Medical Simulacra
+<img src="medical_simulacra.png">
 A python simulation of multiple medical agents. Navigate the environment and talk to agents.
 
-To run do
+## Running the code
 
 ```bash
 pip install -r requirements.txt
