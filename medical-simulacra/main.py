@@ -18,8 +18,8 @@ def main():
     player = Player(5, 7, PLAYER_IMAGE_PATH)
     doctors = [
         Doctor(8, 7, DOCTOR_IMAGES[0], "Dr. Smith", "General Medicine"),
-        Doctor(4, 3, DOCTOR_IMAGES[1], "Dr. Johnson", "Emergency Medicine"),
-        Doctor(SCREEN_WIDTH // TILE_SIZE - 4, 3, DOCTOR_IMAGES[2], "Dr. Williams", "General Practice")
+        Doctor(12, 10, DOCTOR_IMAGES[1], "Dr. Johnson", "Emergency Medicine"),
+        Doctor(16, 5, DOCTOR_IMAGES[2], "Dr. Williams", "Licensed clinical psychologist")
     ]
 
     dialogue_manager = DialogueManager()
@@ -31,14 +31,11 @@ def main():
     while running:
         running = event_handler.handle_events()
         event_handler.check_proximity(doctors)
-        dialogue_manager.update_dialogue()
 
-        current_dialogue = dialogue_manager.get_current_dialogue()
-        if current_dialogue:
-            print(f"Current dialogue: {current_dialogue}")  # Debug print
+        # Removed the call to dialogue_manager.update_dialogue()
 
         draw_game(screen, tile_image, player, doctors, 
-                  current_dialogue, 
+                  dialogue_manager, 
                   event_handler.is_input_active(), 
                   event_handler.get_user_input(),
                   font)

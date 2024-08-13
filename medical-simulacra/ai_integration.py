@@ -21,7 +21,7 @@ def call_ai_assistant(question):
         run = client.beta.threads.runs.create(
             thread_id=thread.id,
             assistant_id="asst_SZP3IHrndmnRLtgSTIbbdGmO",
-            instructions="Please address the user as Jane Doe. The user has a premium account."
+            instructions="Please always be concise in your answer. Adress the user as Sim the patient."
         )
         
         while True:
