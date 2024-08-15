@@ -26,5 +26,6 @@ TILE_IMAGE_PATH = 'sprites/grass2.webp'
 DOCTOR_IMAGES = [
     'sprites/doctor_2.webp',
     'sprites/doctor_3.webp',
-    'sprites/nurse.webp'
+    'sprites/nurse.webp',
+    'sprites/receptionist.webp'
 ]

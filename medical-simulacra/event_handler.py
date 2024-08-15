@@ -1,5 +1,4 @@
 import pygame
-from dialogue_manager import DialogueManager
 
 class EventHandler:
     def __init__(self, player, dialogue_manager):
@@ -22,15 +21,21 @@ class EventHandler:
                 elif event.key in (pygame.K_LEFT, pygame.K_RIGHT, pygame.K_UP, pygame.K_DOWN):
                     self.handle_movement(event.key)
                 elif self.input_active:
-                    if event.key == pygame.K_BACKSPACE:
-                        self.user_input = self.user_input[:-1]
-                    elif event.key == pygame.K_RETURN and self.user_input:
-                        self.dialogue_manager.start_dialogue("User", self.user_input)
-                        self.dialogue_manager.get_ai_response(self.user_input)
-                        self.user_input = ""
-                    elif event.unicode.isprintable():
-                        self.user_input += event.unicode
+                    self.handle_input(event)
         return True
+
+    def handle_input(self, event):
+        if event.key == pygame.K_BACKSPACE:
+            self.user_input = self.user_input[:-1]
+        elif event.key == pygame.K_RETURN:
+            if pygame.key.get_mods() & pygame.KMOD_SHIFT:
+                self.user_input += '\n'
+            elif self.user_input.strip():
+                self.dialogue_manager.start_dialogue("User", self.user_input.strip())
+                self.dialogue_manager.get_ai_response(self.user_input.strip())
+                self.user_input = ""
+        elif event.unicode.isprintable():
+            self.user_input += event.unicode
 
     def handle_movement(self, key):
         old_pos = self.player.pos.copy()

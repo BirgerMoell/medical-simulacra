@@ -15,8 +15,15 @@ class Player:
         self.pos = [new_x, new_y]
 
 class Doctor:
-    def __init__(self, x, y, image_path, name, specialty):
+    def __init__(self, x, y, image_path, name, speciality, prompt):
         self.pos = [x, y]
         self.image = load_image(image_path, (TILE_SIZE, TILE_SIZE))
         self.name = name
-        self.specialty = specialty
+        self.speciality = speciality
+        self.prompt = prompt
+        self.needs_to_move = False
+        self.pending_description = None
+
+    def set_pending_move(self, description):
+        self.needs_to_move = True
+        self.pending_description = description
