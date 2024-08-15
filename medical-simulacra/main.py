@@ -10,7 +10,7 @@ from doctor_actions import move_doctor_to_player
 
 def main():
     pygame.init()
-    #pygame.mixer.init()  # Initialize the mixer for audio   
+    pygame.mixer.init()  # Initialize the mixer for audio   
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Small World Game with Specialized Doctors")
 
@@ -33,8 +33,8 @@ def main():
     running = True
 
     # Load and play background music
-    #pygame.mixer.music.load('sound/chill_1.mp3')  # Replace with your music file path
-    #pygame.mixer.music.play(-1)  # The -1 makes it loop indefinitely
+    pygame.mixer.music.load('sound/chill_healing.mp3')  # Replace with your music file path
+    pygame.mixer.music.play(-1)  # The -1 makes it loop indefinitely
  
     while running:
         running = event_handler.handle_events()
